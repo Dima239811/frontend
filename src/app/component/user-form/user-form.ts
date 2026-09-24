@@ -17,6 +17,9 @@ export class UserForm {
   statusMessage: string = '';
   statusClass: 'success' | 'error' | 'info' | '' = '';
 
+  selectedDate: string = '';
+  usersList: string = '';
+
   sendName(): void {
     if (!this.userName.trim()) {
       this.statusClass = 'error';
@@ -42,5 +45,30 @@ export class UserForm {
         this.statusMessage = error.error || 'Не удалось связаться с сервером. Проверьте, запущен ли Java-проект.';
       }
     });
+  }
+
+  getUsersByDate(): void {
+    if (!this.selectedDate) {
+      this.statusClass = 'error';
+      this.statusMessage = 'Пожалуйста, выберите дату!';
+      return;
+    }
+
+    this.statusClass = 'info';
+    this.statusMessage = 'Поиск пользователей...';
+
+    this.http.get(`http://localhost:8080/api/get-by-date?date=${this.selectedDate}`, { responseType: 'text' })
+      .subscribe({
+        next: (response) => {
+          this.statusClass = 'success';
+          this.statusMessage = 'Данные успешно получены';
+          this.usersList = response;
+        },
+        error: (error) => {
+          console.error('Ошибка:', error);
+          this.statusClass = 'error';
+          this.statusMessage = error.error || 'Не удалось получить данные с сервера.';
+        }
+      });
   }
 }

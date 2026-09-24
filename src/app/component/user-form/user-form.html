@@ -18,4 +18,24 @@
         {{ statusMessage }}
       </div>
     }
+
+    <hr class="divider">
+
+    <h2>Просмотр пользователей по дате</h2>
+    <p class="subtitle">Выберите дату, чтобы узнать, кто отправлял имя в этот день</p>
+
+    <div class="input-group">
+        <input 
+          type="date" 
+          [(ngModel)]="selectedDate"
+        >
+        <button class="secondary-btn" (click)="getUsersByDate()">Показать</button>
+    </div>
+
+    @if (usersList) {
+      <div class="output-group">
+        <h3>Пользователи за {{ selectedDate }}:</h3>
+        <textarea readonly rows="6" [value]="usersList"></textarea>
+      </div>
+    }
 </div>
