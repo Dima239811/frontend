@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #89b5d5; 
+  font-family: Arial, sans-serif;
+}
+
+
+.main {
+  display: flex;
+  justify-content: center; 
+  align-items: center;      
+  min-height: 100vh;       
+  width: 100%;
+}
+
+
+.content {
+  width: 100%;
+  max-width: 450px;        
+  padding: 20px;
+}
+
+
+app-user-form, form {
+  background: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

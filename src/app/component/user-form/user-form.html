@@ -1,0 +1,21 @@
+<div class="card">
+    <h2>Отправка сообщения на backend сервис</h2>
+    <p class="subtitle">Введите ваше имя, чтобы записать его в файл</p>
+
+    <div class="input-group">
+        <input 
+          type="text" 
+          [(ngModel)]="userName" 
+          (keyup.enter)="sendName()" 
+          placeholder="Например: Алексей" 
+          autocomplete="off"
+        >
+        <button (click)="sendName()">Отправить</button>
+    </div>
+
+    @if (statusClass) {
+      <div id="status" [ngClass]="statusClass">
+        {{ statusMessage }}
+      </div>
+    }
+</div>
