@@ -30,8 +30,8 @@ export class UserForm {
     this.statusClass = 'info';
     this.statusMessage = 'Отправка...';
 
-    this.http.post('http://localhost:8080/api/send-name', 
-      { name: this.userName }, 
+    this.http.post('http://localhost:8081/api/send-name',
+      { name: this.userName },
       { responseType: 'text' }
     ).subscribe({
       next: (resultText) => {
@@ -57,7 +57,7 @@ export class UserForm {
     this.statusClass = 'info';
     this.statusMessage = 'Поиск пользователей...';
 
-    this.http.get(`http://localhost:8080/api/get-by-date?date=${this.selectedDate}`, { responseType: 'text' })
+    this.http.get(`http://localhost:8081/api/get-by-date?date=${this.selectedDate}`, { responseType: 'text' })
       .subscribe({
         next: (response) => {
           this.statusClass = 'success';
